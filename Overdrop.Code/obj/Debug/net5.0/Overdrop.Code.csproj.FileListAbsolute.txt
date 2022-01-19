@@ -1,0 +1,12 @@
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\Overdrop.Code.csproj.AssemblyReference.cache
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\Overdrop.Code.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\Overdrop.Code.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\Overdrop.Code.AssemblyInfo.cs
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\Overdrop.Code.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\bin\Debug\net5.0\Overdrop.Code.deps.json
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\bin\Debug\net5.0\Overdrop.Code.dll
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\bin\Debug\net5.0\ref\Overdrop.Code.dll
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\bin\Debug\net5.0\Overdrop.Code.pdb
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\Overdrop.Code.dll
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\ref\Overdrop.Code.dll
+C:\Users\HP\source\repos\Overdrop\Overdrop.Code\obj\Debug\net5.0\Overdrop.Code.pdb

@@ -1,0 +1,1488 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@model DefaultSearchResultModel
+
+
+<div class="section main">
+    <div class="main__center center">
+        <div class="main__head">
+            <div class="main__stage">Create, explore, & collect digital art NFTs.</div>
+            <h3 class="main__title h3">The new creative economy.</h3><a class="button-stroke main__button" asp-area="" asp-controller="Home" asp-action="Search">Start your search</a>
+        </div>
+        <div class="main__wrapper">
+            <div class="main__slider js-slider-main" id="top_main_bids_section">
+                @if(Model != null)
+                {
+                    foreach(var meta in Model.HeaderSliderData)
+                    {
+                    <div class="main__slide">
+                        <div class="main__row">
+                            <div class="player">
+                                <div class="player__preview"><img srcSet="@meta.MainSliderImage" src="@meta.MainSliderImage" alt="Video preview"></div>
+                                @*<div class="player__control">
+                            <button class="player__button">
+                                <svg class="icon icon-play">
+                                    <use xlink:href="#icon-play"></use>
+                                </svg>
+                            </button>
+                            <div class="player__line">
+                                <div class="player__progress" style="width: 20%;"></div>
+                            </div>
+                            <div class="player__time">2:20</div>
+                            <button class="player__button">
+                                <svg class="icon icon-volume">
+                                    <use xlink:href="#icon-volume"></use>
+                                </svg>
+                            </button>
+                            <button class="player__button">
+                                <svg class="icon icon-full-screen">
+                                    <use xlink:href="#icon-full-screen"></use>
+                                </svg>
+                            </button>
+                        </div>*@
+                            </div>
+                            <div class="main__details">
+                                <div style="display:none" id="main_slider_token_id0">@meta.TokenId</div>
+                                <div class="main__subtitle h4" style="text-wrap: avoid; text-transform: capitalize"><span>@meta.Name</span></div>
+                                <div class="main__line">
+                                    <div class="main__item">
+                                        <div class="main__avatar"><img src="@meta.MainSliderImage" alt="Avatar"></div>
+                                        <div class="main__description">
+                                            <div class="main__category">Creator</div>
+                                            <div class="main__text">@meta.CreatorName</div>
+                                        </div>
+                                    </div>
+                                    <div class="main__item">
+                                        <div class="main__icon">
+                                            <svg class="icon icon-stop">
+                                                <use xlink:href="#icon-stop"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="main__description">
+                                            <div class="main__category">Instant price</div>
+                                            <div class="main__text"><span>@meta.InstantPrice</span> ETH</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main__wrap">
+                                    <div class="main__info">Current Bid</div>
+                                    <div class="main__currency"><span>@meta.CurrentPrice</span> ETH</div>
+                                    <div class="main__price">$<span>@meta.MainPrice</span></div>
+                                    <div class="main__info">Auction ending in</div>
+                                    <div class="main__timer"></div>
+                                </div>
+                                <div class="main__btns"><a class="button main__button js-popup-open place_a_bid" href="" token_id="@meta.TokenId" nft_name = "@meta.Name" nft_seller= "@meta.SellerName" nft_reciever_address ="@meta.ReceiverAddress" nft_contract_address="@meta.ContractAddress" data-effect="mfp-zoom-in" onclick="setbidModelContent(this)">Place a bid</a><a class="button-stroke main__button" asp-controller="Home" asp-action="Item" asp-route-id="@meta.TokenId">View item </a></div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-pb selection">
+    <div class="selection__center center">
+        <div class="selection__row">
+            <div class="selection__col">
+                <a class="selection__card" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                    <div class="selection__preview"><img srcSet="~/images/content/selection-pic-1@2x.jpg 2x" src="~/images/content/selection-pic-1.jpg" alt="Selection"></div>
+                    <div class="selection__head">
+                        <div class="selection__line">
+                            <div class="selection__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar"></div>
+                            <div class="selection__description">
+                                <div class="selection__title">The future of ETH®</div>
+                                <div class="selection__counter">18 in stock</div>
+                            </div>
+                        </div>
+                        <div class="selection__box">
+                            <div class="selection__content">Highest bid</div>
+                            <div class="selection__price">1.125 ETH</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="selection__col">
+                <a class="selection__item" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                    <div class="selection__preview"><img srcSet="~/images/content/selection-pic-2@2x.jpg 2x" src="~/images/content/selection-pic-2.jpg" alt="Selection"></div>
+                    <div class="selection__description">
+                        <div class="selection__title">ETH never die</div>
+                        <div class="selection__line">
+                            <div class="selection__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar"></div>
+                            <div class="selection__price">0.27 ETH</div>
+                            <div class="selection__content">1 of 12</div>
+                        </div>
+                        <button class="button-stroke button-small selection__button">Place a bid</button>
+                    </div>
+                </a><a class="selection__item" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                    <div class="selection__preview"><img srcSet="~/images/content/selection-pic-1@2x.jpg 2x" src="~/images/content/selection-pic-1.jpg" alt="Selection"></div>
+                    <div class="selection__description">
+                        <div class="selection__title">Future coming soon</div>
+                        <div class="selection__line">
+                            <div class="selection__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar"></div>
+                            <div class="selection__price">0.27 ETH</div>
+                            <div class="selection__content">1 of 3</div>
+                        </div>
+                        <button class="button-stroke button-small selection__button">Place a bid</button>
+                    </div>
+                </a><a class="selection__item" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                    <div class="selection__preview"><img srcSet="~/images/content/selection-pic-3@2x.jpg 2x" src="~/images/content/selection-pic-3.jpg" alt="Selection"></div>
+                    <div class="selection__description">
+                        <div class="selection__title">Elon Musk silver coin 3d print</div>
+                        <div class="selection__line">
+                            <div class="selection__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar"></div>
+                            <div class="selection__price">0.27 ETH</div>
+                            <div class="selection__content">1 of 4</div>
+                        </div>
+                        <button class="button-stroke button-small selection__button">Place a bid</button>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="selection__sidebar">
+            <div class="selection__info">Latest upload from creators <span role="img" aria-label="fire">🔥</span></div>
+            <div class="selection__list">
+                <div class="selection__user">
+                    <div class="selection__avatar">
+                        <img src="~/images/content/avatar-1.jpg" alt="Avatar">
+                        <div class="selection__number">6</div>
+                    </div>
+                    <div class="selection__description">
+                        <div class="selection__name">Payton Harris</div>
+                        <div class="selection__price"><span>2.456</span> ETH</div>
+                    </div>
+                </div>
+                <div class="selection__user">
+                    <div class="selection__avatar">
+                        <img src="~/images/content/avatar-2.jpg" alt="Avatar">
+                        <div class="selection__number">2</div>
+                    </div>
+                    <div class="selection__description">
+                        <div class="selection__name">Anita Bins</div>
+                        <div class="selection__price"><span>2.456</span> ETH</div>
+                    </div>
+                </div>
+                <div class="selection__user">
+                    <div class="selection__avatar">
+                        <img src="~/images/content/avatar-3.jpg" alt="Avatar">
+                        <div class="selection__number">3</div>
+                    </div>
+                    <div class="selection__description">
+                        <div class="selection__name">Joana Wuckert</div>
+                        <div class="selection__price"><span>2.456</span> ETH</div>
+                    </div>
+                </div>
+                <div class="selection__user">
+                    <div class="selection__avatar">
+                        <img src="~/images/content/avatar-4.jpg" alt="Avatar">
+                        <div class="selection__number">4</div>
+                    </div>
+                    <div class="selection__description">
+                        <div class="selection__name">Lorena Ledner</div>
+                        <div class="selection__price"><span>2.456</span> ETH</div>
+                    </div>
+                </div>
+            </div><a class="button-stroke button-small selection__button" asp-area="" asp-controller="Home" asp-action="Search">
+                <span>Discover more</span>
+                <svg class="icon icon-arrow-next">
+                    <use xlink:href="#icon-arrow-next"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="section-bg popular">
+    <div class="popular__center center">
+        <div class="popular__top">
+            <div class="popular__box">
+                <div class="popular__stage">Popular</div>
+                <select class="select-empty">
+                    <option>Sellers</option>
+                    <option>Buyers</option>
+                </select>
+            </div>
+            <div class="field">
+                <div class="field__label">timeframe</div>
+                <div class="field__wrap">
+                    <select class="select">
+                        <option>Today</option>
+                        <option>Morning</option>
+                        <option>Dinner</option>
+                        <option>Evening</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="popular__wrapper">
+            <div class="popular__slider js-slider-popular">
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#3772FF;">
+                                <div class="popular__icon"><img src="~/images/content/cup.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #1
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-5.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Edd Harris</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#9757D7;">
+                                <div class="popular__icon"><img src="~/images/content/donut.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #2
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-6.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Odell Hane</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#45B26B;">
+                                <div class="popular__icon"><img src="~/images/content/lightning.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #3
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-7.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Marlee Kuphal</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#23262F;">
+                                <div class="popular__icon"><img src="~/images/content/donut.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #4
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-8.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Payton Kunde</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#777E90;">
+                                <div class="popular__icon"><img src="~/images/content/donut.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #5
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-9.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Payton Buckridge</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#3772FF;">
+                                <div class="popular__icon"><img src="~/images/content/cup.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #1
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-5.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Edd Harris</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#9757D7;">
+                                <div class="popular__icon"><img src="~/images/content/donut.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #2
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-6.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Odell Hane</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#45B26B;">
+                                <div class="popular__icon"><img src="~/images/content/lightning.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #3
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-7.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Marlee Kuphal</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popular__slide">
+                    <div class="popular__item">
+                        <div class="popular__head">
+                            <div class="popular__rating" style="background-color:#23262F;">
+                                <div class="popular__icon"><img src="~/images/content/donut.svg" alt="Rating"></div>
+                                <div class="popular__number">
+                                    #4
+                                </div>
+                            </div>
+                            <div class="popular__control">
+                                <button class="popular__button popular__add">
+                                    <svg class="icon icon-add-square">
+                                        <use xlink:href="#icon-add-square"></use>
+                                    </svg>
+                                    <svg class="icon icon-minus-square">
+                                        <use xlink:href="#icon-minus-square"></use>
+                                    </svg>
+                                </button><a class="popular__button" asp-area="" asp-controller="Home" asp-action="Profile">
+                                    <svg class="icon icon-arrow-expand">
+                                        <use xlink:href="#icon-arrow-expand"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="popular__body">
+                            <div class="popular__avatar">
+                                <div class="popular__preview"><img src="~/images/content/avatar-8.jpg" alt="Avatar"></div>
+                                <div class="popular__reward"><img src="~/images/content/reward-1.svg" alt="Reward"></div>
+                            </div>
+                            <div class="popular__name">Payton Kunde</div>
+                            <div class="popular__price"><span>2.456</span> ETH</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section hot">
+    <div class="hot__center center">
+        <div class="hot__wrapper">
+            <h3 class="hot__title h3">Hot bid</h3>
+            <div class="hot__inner">
+                <div class="hot__slider js-slider-hot">
+                    <div class="hot__slide">
+                        <div class="card">
+                            <div class="card__preview">
+                                <img srcSet="~/images/content/card-pic-1@2x.jpg 2x" src="~/images/content/card-pic-1.jpg" alt="Card preview" />
+                                <div class="card__control">
+                                    <div class="status-green card__category">purchasing !</div>
+                                    <button class="card__favorite">
+                                        <svg class="icon icon-heart">
+                                            <use xlink:href="#icon-heart"></use>
+                                        </svg>
+                                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                        <span>Place a bid</span>
+                                        <svg class="icon icon-scatter-up">
+                                            <use xlink:href="#icon-scatter-up"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                                <div class="card__body">
+                                    <div class="card__line">
+                                        <div class="card__title">Amazing digital art</div>
+                                        <div class="card__price">2.45 ETH</div>
+                                    </div>
+                                    <div class="card__line">
+                                        <div class="card__users">
+                                            <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                        </div>
+                                        <div class="card__counter">3 in stock</div>
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__status">
+                                        <svg class="icon icon-candlesticks-up">
+                                            <use xlink:href="#icon-candlesticks-up"></use>
+                                        </svg>Highest bid <span>0.001 ETH</span>
+                                    </div>
+                                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hot__slide">
+                        <div class="card">
+                            <div class="card__preview">
+                                <img srcSet="~/images/content/card-pic-2@2x.jpg 2x" src="~/images/content/card-pic-2.jpg" alt="Card preview" />
+                                <div class="card__control">
+                                    <div class="status-green card__category">purchasing !</div>
+                                    <button class="card__favorite">
+                                        <svg class="icon icon-heart">
+                                            <use xlink:href="#icon-heart"></use>
+                                        </svg>
+                                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                        <span>Place a bid</span>
+                                        <svg class="icon icon-scatter-up">
+                                            <use xlink:href="#icon-scatter-up"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                                <div class="card__body">
+                                    <div class="card__line">
+                                        <div class="card__title">Ribbon Hunter</div>
+                                        <div class="card__price">2.45 ETH</div>
+                                    </div>
+                                    <div class="card__line">
+                                        <div class="card__users">
+                                            <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                        </div>
+                                        <div class="card__counter">3 in stock</div>
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__status">
+                                        <svg class="icon icon-candlesticks-up">
+                                            <use xlink:href="#icon-candlesticks-up"></use>
+                                        </svg>Highest bid <span>0.001 ETH</span>
+                                    </div>
+                                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hot__slide">
+                        <div class="card">
+                            <div class="card__preview">
+                                <img srcSet="~/images/content/card-pic-3@2x.jpg 2x" src="~/images/content/card-pic-3.jpg" alt="Card preview" />
+                                <div class="card__control">
+                                    <div class="status-green card__category">purchasing !</div>
+                                    <button class="card__favorite">
+                                        <svg class="icon icon-heart">
+                                            <use xlink:href="#icon-heart"></use>
+                                        </svg>
+                                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                        <span>Place a bid</span>
+                                        <svg class="icon icon-scatter-up">
+                                            <use xlink:href="#icon-scatter-up"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                                <div class="card__body">
+                                    <div class="card__line">
+                                        <div class="card__title">Amazing digital art</div>
+                                        <div class="card__price">2.45 ETH</div>
+                                    </div>
+                                    <div class="card__line">
+                                        <div class="card__users">
+                                            <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                        </div>
+                                        <div class="card__counter">3 in stock</div>
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__status">
+                                        <svg class="icon icon-candlesticks-up">
+                                            <use xlink:href="#icon-candlesticks-up"></use>
+                                        </svg>Highest bid <span>0.001 ETH</span>
+                                    </div>
+                                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hot__slide">
+                        <div class="card">
+                            <div class="card__preview">
+                                <img srcSet="~/images/content/card-pic-4@2x.jpg 2x" src="~/images/content/card-pic-4.jpg" alt="Card preview" />
+                                <div class="card__control">
+                                    <div class="status-green card__category">purchasing !</div>
+                                    <button class="card__favorite">
+                                        <svg class="icon icon-heart">
+                                            <use xlink:href="#icon-heart"></use>
+                                        </svg>
+                                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                        <span>Place a bid</span>
+                                        <svg class="icon icon-scatter-up">
+                                            <use xlink:href="#icon-scatter-up"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                                <div class="card__body">
+                                    <div class="card__line">
+                                        <div class="card__title">Ribbon Hunter</div>
+                                        <div class="card__price">2.45 ETH</div>
+                                    </div>
+                                    <div class="card__line">
+                                        <div class="card__users">
+                                            <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                        </div>
+                                        <div class="card__counter">3 in stock</div>
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__status">
+                                        <svg class="icon icon-candlesticks-up">
+                                            <use xlink:href="#icon-candlesticks-up"></use>
+                                        </svg>Highest bid <span>0.001 ETH</span>
+                                    </div>
+                                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hot__slide">
+                        <div class="card">
+                            <div class="card__preview">
+                                <img srcSet="~/images/content/card-pic-5@2x.jpg 2x" src="~/images/content/card-pic-5.jpg" alt="Card preview" />
+                                <div class="card__control">
+                                    <div class="status-green card__category">purchasing !</div>
+                                    <button class="card__favorite">
+                                        <svg class="icon icon-heart">
+                                            <use xlink:href="#icon-heart"></use>
+                                        </svg>
+                                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                        <span>Place a bid</span>
+                                        <svg class="icon icon-scatter-up">
+                                            <use xlink:href="#icon-scatter-up"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                                <div class="card__body">
+                                    <div class="card__line">
+                                        <div class="card__title">Amazing digital art</div>
+                                        <div class="card__price">2.45 ETH</div>
+                                    </div>
+                                    <div class="card__line">
+                                        <div class="card__users">
+                                            <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                        </div>
+                                        <div class="card__counter">3 in stock</div>
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__status">
+                                        <svg class="icon icon-candlesticks-up">
+                                            <use xlink:href="#icon-candlesticks-up"></use>
+                                        </svg>Highest bid <span>0.001 ETH</span>
+                                    </div>
+                                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hot__slide">
+                        <div class="card">
+                            <div class="card__preview">
+                                <img srcSet="~/images/content/card-pic-6@2x.jpg 2x" src="~/images/content/card-pic-6.jpg" alt="Card preview" />
+                                <div class="card__control">
+                                    <div class="status-green card__category">purchasing !</div>
+                                    <button class="card__favorite">
+                                        <svg class="icon icon-heart">
+                                            <use xlink:href="#icon-heart"></use>
+                                        </svg>
+                                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                        <span>Place a bid</span>
+                                        <svg class="icon icon-scatter-up">
+                                            <use xlink:href="#icon-scatter-up"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                                <div class="card__body">
+                                    <div class="card__line">
+                                        <div class="card__title">Ribbon Hunter</div>
+                                        <div class="card__price">2.45 ETH</div>
+                                    </div>
+                                    <div class="card__line">
+                                        <div class="card__users">
+                                            <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                        </div>
+                                        <div class="card__counter">3 in stock</div>
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__status">
+                                        <svg class="icon icon-candlesticks-up">
+                                            <use xlink:href="#icon-candlesticks-up"></use>
+                                        </svg>Highest bid <span>0.001 ETH</span>
+                                    </div>
+                                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hot__slide">
+                        <div class="card">
+                            <div class="card__preview">
+                                <img srcSet="~/images/content/card-pic-7@2x.jpg 2x" src="~/images/content/card-pic-7.jpg" alt="Card preview" />
+                                <div class="card__control">
+                                    <div class="status-green card__category">purchasing !</div>
+                                    <button class="card__favorite">
+                                        <svg class="icon icon-heart">
+                                            <use xlink:href="#icon-heart"></use>
+                                        </svg>
+                                    </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                        <span>Place a bid</span>
+                                        <svg class="icon icon-scatter-up">
+                                            <use xlink:href="#icon-scatter-up"></use>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                                <div class="card__body">
+                                    <div class="card__line">
+                                        <div class="card__title">Amazing digital art</div>
+                                        <div class="card__price">2.45 ETH</div>
+                                    </div>
+                                    <div class="card__line">
+                                        <div class="card__users">
+                                            <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                            <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                        </div>
+                                        <div class="card__counter">3 in stock</div>
+                                    </div>
+                                </div>
+                                <div class="card__foot">
+                                    <div class="card__status">
+                                        <svg class="icon icon-candlesticks-up">
+                                            <use xlink:href="#icon-candlesticks-up"></use>
+                                        </svg>Highest bid <span>0.001 ETH</span>
+                                    </div>
+                                    <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section-bg collections">
+    <div class="collections__center center">
+        <div class="collections__wrapper">
+            <h3 class="collections__title h3">Hot collections</h3>
+            <div class="collections__inner">
+                <div class="collections__slider js-slider-collections">
+                    <a class="collections__item" asp-area="" asp-controller="Home" asp-action="Profile">
+                        <div class="collections__gallery">
+                            <div class="collections__preview"><img src="~/images/content/photo-1.1.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-1.2.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-1.3.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-1.4.jpg" alt="Collections"></div>
+                        </div>
+                        <div class="collections__subtitle">Awesome collection</div>
+                        <div class="collections__line">
+                            <div class="collections__user">
+                                <div class="collections__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar"></div>
+                                <div class="collections__author">By <span>Kennith Olson</span></div>
+                            </div>
+                            <div class="status-stroke-black collections__counter"><span>28 items</span></div>
+                        </div>
+                    </a><a class="collections__item" asp-area="" asp-controller="Home" asp-action="Profile">
+                        <div class="collections__gallery">
+                            <div class="collections__preview"><img src="~/images/content/photo-2.1.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-2.2.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-2.3.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-2.4.jpg" alt="Collections"></div>
+                        </div>
+                        <div class="collections__subtitle">Awesome collection</div>
+                        <div class="collections__line">
+                            <div class="collections__user">
+                                <div class="collections__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar"></div>
+                                <div class="collections__author">By <span>Willie Barton</span></div>
+                            </div>
+                            <div class="status-stroke-black collections__counter"><span>28 items</span></div>
+                        </div>
+                    </a><a class="collections__item" asp-area="" asp-controller="Home" asp-action="Profile">
+                        <div class="collections__gallery">
+                            <div class="collections__preview"><img src="~/images/content/photo-3.1.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-3.2.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-3.3.jpg" alt="Collections"></div>
+                            <div class="collections__preview"><img src="~/images/content/photo-3.4.jpg" alt="Collections"></div>
+                        </div>
+                        <div class="collections__subtitle">Awesome collection</div>
+                        <div class="collections__line">
+                            <div class="collections__user">
+                                <div class="collections__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar"></div>
+                                <div class="collections__author">By <span>Halle Jakubowski</span></div>
+                            </div>
+                            <div class="status-stroke-black collections__counter"><span>28 items</span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section discover">
+    <div class="discover__center center">
+        <h3 class="discover__title h3">Discover</h3>
+        <div class="discover__top">
+            <select class="select">
+                <option>Recently added</option>
+                <option>Long added</option>
+            </select>
+            <div class="discover__nav"><a class="discover__link active" href="#">All items</a><a class="discover__link" href="#">Art</a><a class="discover__link" href="#">Game</a><a class="discover__link" href="#">Photography</a><a class="discover__link" href="#">Music</a><a class="discover__link" href="#">Video</a></div>
+            <div class="tablet-show">
+                <select class="select">
+                    <option>All items</option>
+                    <option>Art</option>
+                    <option>Game</option>
+                    <option>Photography</option>
+                    <option>Music</option>
+                    <option>Video</option>
+                </select>
+            </div>
+            <button class="discover__filter">
+                <div class="discover__text">Filter</div>
+                <div class="discover__icon">
+                    <svg class="icon icon-filter">
+                        <use xlink:href="#icon-filter"></use>
+                    </svg>
+                    <svg class="icon icon-close">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </div>
+            </button>
+        </div>
+        <div class="discover__filters">
+            <div class="discover__sorting">
+                <div class="discover__cell">
+                    <div class="field">
+                        <div class="field__label">Price</div>
+                        <div class="field__wrap">
+                            <select class="select">
+                                <option>Highest price</option>
+                                <option>The lowest price</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="discover__cell">
+                    <div class="field">
+                        <div class="field__label">likes</div>
+                        <div class="field__wrap">
+                            <select class="select">
+                                <option>Most liked</option>
+                                <option>Least liked</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="discover__cell">
+                    <div class="field">
+                        <div class="field__label">creator</div>
+                        <div class="field__wrap">
+                            <select class="select">
+                                <option>Verified only</option>
+                                <option>All</option>
+                                <option>Most liked</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="discover__cell">
+                    <div class="range">
+                        <div class="range__label">Price range</div>
+                        <div class="range__slider js-slider" data-min="0.01" data-max="10" data-start="5" data-step="0.1" data-tooltips="true" data-postfix=" ETH"></div>
+                        <div class="range__indicators">
+                            <div class="range__text">0.01 ETH</div>
+                            <div class="range__text">10 ETH</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="discover__list">
+            <div class="discover__slider js-slider-discover js-slider-resize">
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-1@2x.jpg 2x" src="~/images/content/card-pic-1.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Amazing digital art</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-2@2x.jpg 2x" src="~/images/content/card-pic-2.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Ribbon Hunter</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-3@2x.jpg 2x" src="~/images/content/card-pic-3.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Amazing digital art</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-4@2x.jpg 2x" src="~/images/content/card-pic-4.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Ribbon Hunter</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-5@2x.jpg 2x" src="~/images/content/card-pic-5.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Amazing digital art</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-6@2x.jpg 2x" src="~/images/content/card-pic-6.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Ribbon Hunter</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-7@2x.jpg 2x" src="~/images/content/card-pic-7.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Amazing digital art</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <div class="card__preview">
+                        <img srcSet="~/images/content/card-pic-1@2x.jpg 2x" src="~/images/content/card-pic-1.jpg" alt="Card preview" />
+                        <div class="card__control">
+                            <div class="status-green card__category">purchasing !</div>
+                            <button class="card__favorite">
+                                <svg class="icon icon-heart">
+                                    <use xlink:href="#icon-heart"></use>
+                                </svg>
+                            </button><a class="button-small card__button js-popup-open" href="#popup-bid" data-effect="mfp-zoom-in">
+                                <span>Place a bid</span>
+                                <svg class="icon icon-scatter-up">
+                                    <use xlink:href="#icon-scatter-up"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div><a class="card__link" asp-controller="Home" asp-action="Item" asp-route-id="10">
+                        <div class="card__body">
+                            <div class="card__line">
+                                <div class="card__title">Amazing digital art</div>
+                                <div class="card__price">2.45 ETH</div>
+                            </div>
+                            <div class="card__line">
+                                <div class="card__users">
+                                    <div class="card__avatar"><img src="~/images/content/avatar-1.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-3.jpg" alt="Avatar" /></div>
+                                    <div class="card__avatar"><img src="~/images/content/avatar-4.jpg" alt="Avatar" /></div>
+                                </div>
+                                <div class="card__counter">3 in stock</div>
+                            </div>
+                        </div>
+                        <div class="card__foot">
+                            <div class="card__status">
+                                <svg class="icon icon-candlesticks-up">
+                                    <use xlink:href="#icon-candlesticks-up"></use>
+                                </svg>Highest bid <span>0.001 ETH</span>
+                            </div>
+                            <div class="card__bid">New bid <span role="img" aria-label="fire">🔥</span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="discover__btns">
+            <button class="button-stroke button-small">Load more</button>
+        </div>
+    </div>
+</div>
+<div class="section description">
+    <div class="description__center center">
+        <div class="description__wrap">
+            <div class="description__stage">Save your time with Stacks</div>
+            <h1 class="description__title h1">Earn free crypto with Crypter</h1>
+            <div class="description__text">A creative agency that lead and inspire</div>
+            <div class="description__btns"><a class="button description__button" asp-area="" asp-controller="Home" asp-action="UploadVariants">Create item</a><a class="button-stroke description__button" asp-area="" asp-controller="Home" asp-action="Search">Discover more</a></div>
+        </div>
+        <div class="description__gallery">
+            <div class="description__preview"><img class="some-icon" srcSet="~/images/content/cubes@2x.png 2x" src="~/images/content/cubes.png" alt="Cubes"><img class="some-icon-dark" srcSet="~/images/content/cubes-dark@2x.png 2x" src="~/images/content/cubes-dark.png" alt="Cubes"></div>
+            <div class="description__preview"><img class="some-icon" srcSet="~/images/content/cube@2x.png 2x" src="~/images/content/cube.png" alt="Cube"><img class="some-icon-dark" srcSet="~/images/content/cube-dark@2x.png 2x" src="~/images/content/cube-dark.png" alt="Cube"></div>
+        </div>
+    </div>
+</div>
+<div class="popup popup_connect mfp-hide" id="popup-connect">
+    <div class="popup__img">
+        <svg class="icon icon-wallet">
+            <use xlink:href="#icon-wallet"></use>
+        </svg>
+    </div>
+    <div class="popup__description">You need to connect your wallet first to sign messages and send transaction to Ethereum network</div>
+    <div class="popup__btns">
+        <a class="button popup__button" asp-area="" asp-controller="Home" asp-action="ConnectWallet">Connect wallet</a>
+        <button class="button-stroke popup__button js-popup-close">Cancel</button>
+    </div>
+</div>
+<div class="popup popup_wallet mfp-hide" id="popup-wallet">
+    <div class="popup__title h4">Folow steps</div>
+    <div class="steps">
+        <div class="steps__item">
+            <div class="steps__head">
+                <div class="steps__icon">
+                    <svg class="icon icon-upload-file">
+                        <use xlink:href="#icon-upload-file"></use>
+                    </svg>
+                </div>
+                <div class="steps__details">
+                    <div class="steps__info">Buy Token</div>
+                    <div class="steps__text">Send transaction with your wallet</div>
+                </div>
+            </div>
+            <button class="button steps__button" id="send_transaction_wallet">Start now</button>
+        </div>
+        <div class="steps__item">
+            <div class="steps__head">
+                <div class="steps__icon">
+                    <svg class="icon icon-check">
+                        <use xlink:href="#icon-check"></use>
+                    </svg>
+                </div>
+                <div class="steps__details">
+                    <div class="steps__info">Approve</div>
+                    <div class="steps__text">Checking balance and approving</div>
+                </div>
+            </div>
+            <button class="button steps__button disabled">Start now</button>
+        </div>
+        <div class="steps__item">
+            <div class="steps__head">
+                <div class="steps__icon">
+                    <svg class="icon icon-pencil">
+                        <use xlink:href="#icon-pencil"></use>
+                    </svg>
+                </div>
+                <div class="steps__details">
+                    <div class="steps__info">Signature</div>
+                    <div class="steps__text">Create a signature to place a bit</div>
+                </div>
+            </div>
+            <button class="button steps__button disabled js-popup-close">Start now</button>
+        </div>
+    </div>
+</div>
+<div class="popup popup_bid mfp-hide" id="popup-bid">
+    <div class="popup__title h4">Place a bid</div>
+    <div class="popup__info">You are about to purchase <strong><span id="bid_nft_name"></span></strong> from <strong><span id="bid_nft_seller"></span></strong></div>
+    <div class="popup__subtitle">Your bid</div>
+    <div class="popup__table">
+        <div class="popup__row">
+            <div class="popup__col">Enter bid</div>
+            <div class="popup__col">
+                <div class="popup__bid">
+                    <input class="popup__rate" type="number" min="0" max="99999999999999999999999999999" step="any" id="bid_input_amount" name="bid" />
+                    <div class="popup__currency">ETH</div>
+                </div>
+            </div>
+        </div>
+        <div class="popup__row">
+            <div class="popup__col">Your balance</div>
+            <div class="popup__col"><span id="bid_wallet_balance">0</span> ETH</div>
+        </div>
+        <div class="popup__row">
+            <div class="popup__col">Service fee</div>
+            <div class="popup__col"><span id="bid_service_fee">0</span> ETH</div>
+        </div>
+        <div class="popup__row">
+            <div class="popup__col">Total bid amount</div>
+            <div class="popup__col"><span id="bid_total_amount">0</span> ETH</div>
+        </div>
+    </div>
+    <div class="popup__btns">
+        <div style="display:none"><span id="bid_token_id"></span><span id="bid_token_contract_address"></span><span id="bid_nft_reciever_address"></span></div>
+        <a class="button popup__button js-popup-open" href="#" data-effect="mfp-zoom-in" id="bid_popup_place_bid">Place a bid</a>
+        @*<a class="button popup__button js-popup-open" href="#popup-wallet" data-effect="mfp-zoom-in" id="bid_popup_place_bid">Place a bid</a>*@
+        <button class="button-stroke popup__button js-popup-close" id="place_bid_cancel_btn">Cancel</button>
+    </div>
+</div>
+
+<!--<script id="hidden-nft-with-details" type="text/x-handlebars-template">
+    {{#each nft}}
+    <div class="main__slide">
+        <div class="main__row">
+            <div class="player">
+                <div class="player__preview"><img srcSet="{{ nft.metadata.image_url_cdn}}" src="{{ nft.metadata.image_url_cdn}}" alt="Video preview"></div>-->
+                @*<div class="player__control">
+                        <button class="player__button">
+                            <svg class="icon icon-play">
+                                <use xlink:href="#icon-play"></use>
+                            </svg>
+                        </button>
+                        <div class="player__line">
+                            <div class="player__progress" style="width: 20%;"></div>
+                        </div>
+                        <div class="player__time">2:20</div>
+                        <button class="player__button">
+                            <svg class="icon icon-volume">
+                                <use xlink:href="#icon-volume"></use>
+                            </svg>
+                        </button>
+                        <button class="player__button">
+                            <svg class="icon icon-full-screen">
+                                <use xlink:href="#icon-full-screen"></use>
+                            </svg>
+                        </button>
+                    </div>*@
+            <!--</div>
+            <div class="main__details">
+                <div class="main__subtitle h1">the creator network®</div>
+                <div class="main__line">
+                    <div class="main__item">
+                        <div class="main__avatar"><img src="{{ nft.metadata.image_url_cdn}}" alt="Avatar"></div>
+                        <div class="main__description">
+                            <div class="main__category">Creator</div>
+                            <div class="main__text">{{nft.owner.name}}</div>
+                        </div>
+                    </div>
+                    <div class="main__item">
+                        <div class="main__icon">
+                            <svg class="icon icon-stop">
+                                <use xlink:href="#icon-stop"></use>
+                            </svg>
+                        </div>
+                        <div class="main__description">
+                            <div class="main__category">Instant price</div>
+                            <div class="main__text">{{nft.auction.end_price}} ETH</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__wrap">
+                    <div class="main__info">Current Bid</div>
+                    <div class="main__currency">{{nft.auction.current_price}} ETH</div>
+                    <div class="main__price">${{nft.auction.start_price}}</div>
+                    <div class="main__info">Auction ending in</div>
+                    <div class="main__timer"></div>
+                </div>
+                <div class="main__btns"><a class="button main__button js-popup-open" href="#popup-connect" data-effect="mfp-zoom-in">Place a bid</a><a class="button-stroke main__button" asp-controller="Home" asp-action="Item" asp-route-id="{{token_id}}">View item </a></div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>-->
+@section Scripts{
+    <script src="~/js/index.js" asp-append-version="true"></script>
+}

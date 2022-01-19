@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Upload Variants";
+}
+
+    <div class="control">
+        <div class="control__center center">
+            <a class="button-stroke button-small control__button" asp-area="" asp-controller="Home" asp-action="Index">
+                <svg class="icon icon-arrow-prev">
+                    <use xlink:href="#icon-arrow-prev"></use>
+                </svg><span>Back to home</span>
+            </a>
+            <div class="breadcrumbs">
+                <ul class="breadcrumbs">
+                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumbs__item">Upload Item</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="section-pt80 variants">
+        <div class="variants__center center">
+            <div class="variants__top">
+                <h1 class="variants__title h2">Upload item</h1>
+                <div class="variants__info">Choose <span>“Single”</span> if you want your collectible to be one of a kind or <span>“Multiple”</span> if you want to sell one collectible multiple times</div>
+            </div>
+            <div class="variants__list">
+                <div class="variants__item">
+                    <div class="variants__preview"><img srcSet="~/images/content/upload-pic-1@2x.jpg 2x" src="~/images/content/upload-pic-1.jpg" alt="Upload"></div><a class="button-stroke variants__button" asp-area="" asp-controller="Home" asp-action="UploadDetails">Create Single</a>
+                </div>
+                <div class="variants__item">
+                    <div class="variants__preview"><img srcSet="~/images/content/upload-pic-2@2x.jpg 2x" src="~/images/content/upload-pic-2.jpg" alt="Upload"></div><a class="button-stroke variants__button" asp-area="" asp-controller="Home" asp-action="UploadDetailsMultiple">Create Multiple</a>
+                </div>
+            </div>
+            <div class="variants__note">We do not own your private keys and cannot access your funds without your confirmation.</div>
+        </div>
+    </div>

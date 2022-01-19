@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\HP\source\repos\Overdrop\Overdrop\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2022-01-18T20:33:03.5355777Z;True|2022-01-18T05:52:06.9735129+01:00;True|2022-01-17T00:33:53.2641056+01:00;True|2022-01-17T00:26:17.9504509+01:00;True|2022-01-15T17:50:09.0914006+01:00;True|2022-01-15T17:31:22.0241400+01:00;True|2022-01-14T06:44:43.0569577+01:00;True|2022-01-12T20:21:56.8047193+01:00;True|2022-01-12T03:33:03.2039471+01:00;True|2022-01-12T03:00:28.6446001+01:00;True|2022-01-12T02:58:48.1578322+01:00;True|2022-01-12T02:37:41.4048212+01:00;True|2022-01-12T02:30:03.4888463+01:00;True|2022-01-11T20:28:43.4981596+01:00;True|2022-01-11T20:18:46.9778753+01:00;True|2022-01-11T19:40:51.8654588+01:00;True|2022-01-11T19:26:48.3225248+01:00;</History>
+  </PropertyGroup>
+</Project>
